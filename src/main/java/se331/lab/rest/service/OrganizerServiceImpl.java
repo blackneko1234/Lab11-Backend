@@ -11,16 +11,27 @@ import se331.lab.rest.entity.Organizer;
 import java.util.List;
 
 @Service
-public class OrganizerServiceImpl implements OrganizerService{
+public class OrganizerServiceImpl implements OrganizerService {
     @Autowired
     OrganizerDao organizerDao;
+
     @Override
     public List<Organizer> getAllOrganizer() {
         return organizerDao.getOrganizer(Pageable.unpaged()).getContent();
     }
 
     @Override
-    public Page<Organizer> getOrganizer(Integer page, Integer pageSize) {
-        return organizerDao.getOrganizer(PageRequest.of(page,pageSize));
+    public Organizer save(Organizer organizer) {
+        return organizerDao.save(organizer);
+    }
+
+    @Override
+    public Organizer getOrganizer(Long id) {
+        return organizerDao.getOrganizer(id);
+    }
+
+    @Override
+    public Page<Organizer> getOrganizers(Integer page, Integer pageSize) {
+        return organizerDao.getOrganizer(PageRequest.of(page, pageSize));
     }
 }

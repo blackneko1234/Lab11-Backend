@@ -12,11 +12,12 @@ import se331.lab.rest.entity.Organizer;
 import javax.transaction.Transactional;
 
 @Service
-public class EventServiceImpl implements EventService{
+public class EventServiceImpl implements EventService {
     @Autowired
     EventDao eventDao;
     @Autowired
     OrganizerDao organizerDao;
+
     @Override
     public Integer getEventSize() {
         return eventDao.getEventSize();
@@ -43,6 +44,6 @@ public class EventServiceImpl implements EventService{
 
     @Override
     public Page<Event> getEvents(String title, Pageable pageable) {
-        return eventDao.getEvent(title,pageable);
+        return eventDao.getEvent(title, pageable);
     }
 }
